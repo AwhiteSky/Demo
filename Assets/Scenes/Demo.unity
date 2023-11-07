@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 239922643}
   - component: {fileID: 239922642}
   - component: {fileID: 239922641}
+  - component: {fileID: 239922645}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -314,6 +315,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &239922645
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239922640}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &356493654
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +360,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a36bd918ca34e8a4db7d8e002cd520bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cube: {fileID: 239922640}
+  cube_rigidbody: {fileID: 239922645}
 --- !u!4 &356493656
 Transform:
   m_ObjectHideFlags: 0
@@ -464,9 +483,9 @@ MonoBehaviour:
   aimMoveSpeed: 10
   yMinLimit: 10
   yMaxLimit: 90
-  distance: 100
+  distance: 10
   minDistance: 1
-  maxDistance: 4500
+  maxDistance: 450
   needDamping: 1
   damping: 3
   posx: 0
@@ -607,7 +626,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117069226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -46.278465, y: 1.86, z: 17.217327}
+  m_LocalPosition: {x: -9.1, y: 1.86, z: -14.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
