@@ -66,6 +66,8 @@
     <Compile Include="Assets\Scripts\MoveCameraByMouse.cs" />
     <Compile Include="Assets\Scripts\Main.cs" />
     <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics.cs" />
+    <Compile Include="Assets\Scripts\ThrownItem.cs" />
+    <Compile Include="Assets\Scripts\ThrownPoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\DOTween\DOTween.XML" />
