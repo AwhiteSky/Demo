@@ -41,7 +41,12 @@ public class player : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 if (_canJump)
-                    cube_rigidbody.velocity = _power * (gameCamera.transform.forward.normalized + new Vector3(0, 1, 0));
+                {
+                    Vector3 d = gameCamera.transform.forward.normalized;
+                    d.y = 1;
+                    cube_rigidbody.velocity = _power * (d);
+                }
+                    
                 //Debug.Log(_power);
                 StartCoroutine(ChangeScaleBack(playTransform));
                 _power = 1;
