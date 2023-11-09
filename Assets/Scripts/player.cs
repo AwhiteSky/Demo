@@ -32,13 +32,15 @@ public class player : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
             {
+                if (!arrow.activeSelf)
+                    arrow.SetActive(true);
                 _power += Time.deltaTime * _speed;
                 if (_power > 12)
                     _power = 12;
 
                 playTransform.localScale = new Vector3(1f, 1f - (0.8f * _power / _maxPower), 1f);
 
-                arrow.SetActive(true);
+                
                 var dis = gameCamera.transform.forward;
                 dis.y = 0;
                 dis = arrow.transform.position + dis.normalized;
