@@ -10,6 +10,7 @@ public class player : MonoBehaviour
     public Transform playTransform;
     public Camera gameCamera;
     public GameObject Aim;
+    public GameObject arrow;
 
     private float _power = 1;
     private float _speed = 5;
@@ -36,10 +37,18 @@ public class player : MonoBehaviour
                     _power = 12;
 
                 playTransform.localScale = new Vector3(1f, 1f - (0.8f * _power / _maxPower), 1f);
+
+                arrow.SetActive(true);
+                var dis = gameCamera.transform.forward;
+                dis.y = 0;
+                dis = arrow.transform.position + dis.normalized;
+                arrow.transform.LookAt(dis);
             }
 
             if (Input.GetMouseButtonUp(0))
             {
+                if (arrow.activeSelf)
+                    arrow.SetActive(false);
                 if (_canJump)
                 {
                     Vector3 d = gameCamera.transform.forward.normalized;
@@ -51,6 +60,8 @@ public class player : MonoBehaviour
                 StartCoroutine(ChangeScaleBack(playTransform));
                 _power = 1;
             }
+
+            
         }
     }
 
