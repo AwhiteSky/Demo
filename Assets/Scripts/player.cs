@@ -91,7 +91,9 @@ public class player : MonoBehaviour
 
             while(activeParabola.childCount > 0)
             {
-                activeParabola.GetChild(0).parent = closeParabola;
+                var a = activeParabola.GetChild(0);
+                a.parent = closeParabola;
+                a.position = Vector3.zero;
             }
         }
         else if(collision.transform.tag == "Step")
