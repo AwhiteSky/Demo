@@ -19,6 +19,12 @@ public class player : MonoBehaviour
     private bool _canJump = false;
     private float _maxDis = 10;
     private bool _isGameOver = false;
+
+    private float testTime = 0;
+
+    public Transform activeParabola;
+    public Transform closeParabola;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +61,8 @@ public class player : MonoBehaviour
                 {
                     Vector3 d = gameCamera.transform.forward.normalized;
                     d.y = 1;
+
+                    CreateParabola(cube.transform.position, _power * (d));
                     cube_rigidbody.velocity = _power * (d);
                 }
                     
@@ -63,16 +71,28 @@ public class player : MonoBehaviour
                 _power = 1;
             }
 
-            
+            //testTime += Time.deltaTime;
+            //if (testTime > 0.2f)
+            //{
+                
+            //    testTime -= 0.2f;
+            //    Debug.Log("velocity:  " + cube_rigidbody.velocity);
+            //    Debug.Log("position:  " + cube.transform.position);
+            //}
         }
     }
 
-    // ≈ˆ◊≤ø™ º
+    // Á¢∞ÊíûÂºÄÂßã
     void OnCollisionEnter(Collision collision)
     {
         if(collision.transform.tag=="Ground")
         {
             _isGameOver = true;
+
+            while(activeParabola.childCount > 0)
+            {
+                activeParabola.GetChild(0).parent = closeParabola;
+            }
         }
         else if(collision.transform.tag == "Step")
         {
@@ -90,10 +110,12 @@ public class player : MonoBehaviour
         }
     }
 
-    // ≈ˆ◊≤Ω· ¯
+    // Á¢∞ÊíûÁªìÊùü
     void OnCollisionExit(Collision collision)
     {
         _canJump = false;
+        
+        
     }
 
     public IEnumerator ChangeScaleBack(Transform playtransform, float time=0.01f)
@@ -113,6 +135,34 @@ public class player : MonoBehaviour
         _isGameOver = false;
         Aim.transform.position = new Vector3(1.96f, 5.95f, -12.79f);
         transform.position = new Vector3(-3.16f, 4.45f, -12.75f);
+    }
+
+    public void CreateParabola(Vector3 pos,Vector3 vel)
+    {
+
+        for (float t = 0; t < 2; t += 0.2f)
+        {
+            Vector3 newPostion = pos + new Vector3(vel.x * t, vel.y * t + t * t * (-9.8f) / 2, vel.z * t);
+            if(activeParabola.childCount==10)
+            {
+                activeParabola.GetChild((int)(t / 0.2f)).transform.position = newPostion;
+            }
+            else
+            {
+                if(closeParabola.childCount>0)
+                {
+                    closeParabola.GetChild(0).position = newPostion;
+                    closeParabola.GetChild(0).parent = activeParabola;
+                }
+                else
+                {
+                    GameObject Go = Instantiate(Resources.Load<GameObject>("Prefabs/Sphere"), activeParabola);
+                    Go.transform.position = newPostion;
+                }
+                
+            }
+
+        }
     }
 
 }
