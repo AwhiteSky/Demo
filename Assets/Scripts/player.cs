@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class player : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class player : MonoBehaviour
 
     public Transform activeParabola;
     public Transform closeParabola;
+
+    public TextMeshProUGUI gradeText;
 
     // Start is called before the first frame update
     void Start()
@@ -166,5 +169,42 @@ public class player : MonoBehaviour
 
         }
     }
+
+    //public void SetPoiPos()
+    //{
+    //    for (int i = 0; i < _poiList.Length; i++)
+    //    {
+    //        // 获取屏幕和Canvas的尺寸
+    //        var canvasSize = ((RectTransform)transform.GetComponent<Canvas>().transform).sizeDelta;
+    //        var screenSize = new Vector2Int(camera.pixelWidth, camera.pixelHeight);
+
+    //        // 计算锚点的最大最小最坐标
+    //        var anchorMinPosX = canvasSize.x * ((RectTransform)Global.PoiDic[_poiList[i].id].transform).anchorMin.x;
+    //        var anchorMaxPosX = canvasSize.x * ((RectTransform)Global.PoiDic[_poiList[i].id].transform).anchorMax.x;
+    //        var anchorMinPosY = canvasSize.y * ((RectTransform)Global.PoiDic[_poiList[i].id].transform).anchorMin.y;
+    //        var anchorMaxPosY = canvasSize.y * ((RectTransform)Global.PoiDic[_poiList[i].id].transform).anchorMax.y;
+
+    //        // 计算世界空间位置映射到屏幕空间的位置
+    //        var worldCamScreenPos = camera.WorldToScreenPoint(_poiList[i].transform.position);
+
+    //        // 计算屏幕空间位置映射到UICanvas空间的位置
+    //        worldCamScreenPos.x *= canvasSize.x / screenSize.x;
+    //        worldCamScreenPos.y *= canvasSize.y / screenSize.y;
+
+    //        // 计算UI在Canvas上的位置
+    //        var uiAnchoredPos = new Vector2()
+    //        {
+    //            x = (worldCamScreenPos.x - anchorMinPosX + worldCamScreenPos.x - anchorMaxPosX) / 2,
+    //            y = (worldCamScreenPos.y - anchorMinPosY + worldCamScreenPos.y - anchorMaxPosY) / 2 + 20
+    //        };
+
+
+    //        if (Global.PoiDic[_poiList[i].id].activeSelf)
+    //        {
+    //            ((RectTransform)Global.PoiDic[_poiList[i].id].transform).anchoredPosition = uiAnchoredPos;
+    //        }
+
+    //    }
+    //}
 
 }
