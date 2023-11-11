@@ -12,6 +12,15 @@ public class meshtest : MonoBehaviour
     // Start is called before the first frame update
 
     public Material cross;
+
+    private bool isClick = false;
+    private Transform curTf = null;
+    private Vector3 oriMousePos;
+    private Vector3 oriObjectScreenPos;
+
+    public LineRenderer line;
+    public Vector3 MouseDown;
+    public Vector3 MouseUp;
     void Start()
     {
         
@@ -27,6 +36,8 @@ public class meshtest : MonoBehaviour
         //    GameObject lower = hull.CreateLowerHull(sourceGo, sectionMat);
         //    sourceGo.SetActive(false);
         //}
+
+
         //检测鼠标横向移动
         float mx = Input.GetAxis("Mouse X");
         transform.Rotate(mx * 2, 0, 0);
@@ -45,7 +56,7 @@ public class meshtest : MonoBehaviour
 
                 //添加切割面的材质
                 //切割并返回表皮
-                SlicedHull hull = c.gameObject.Slice(c.transform.position, c.transform.up);
+                SlicedHull hull = c.gameObject.Slice(transform.position, transform.up);
                 //print(hull);
                 if (hull != null)
                 {
@@ -64,5 +75,31 @@ public class meshtest : MonoBehaviour
                 }
             }
         }
+
+
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //    RaycastHit hit;
+        //    if (Physics.Raycast(ray, out hit, 100))
+        //    {
+        //        curTf = hit.transform;
+        //        oriObjectScreenPos = Camera.main.WorldToScreenPoint(curTf.position);
+        //        oriMousePos = Input.mousePosition;
+        //    }
+        //    isClick = !isClick;
+        //}
+        //if (isClick)
+        //{
+        //    if (curTf != null)
+        //    {
+        //        Vector3 curMousePos = Input.mousePosition;
+        //        Vector3 mouseOffset = curMousePos - oriMousePos;
+        //        Vector3 curObjectScreenPos = oriObjectScreenPos + mouseOffset;
+        //        Vector3 curObjectWorldPos = Camera.main.ScreenToWorldPoint(curObjectScreenPos);
+        //        curTf.position = curObjectWorldPos;
+        //    }
+        //}
+
     }
 }
