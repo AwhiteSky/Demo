@@ -65,7 +65,7 @@ namespace HNLG
 
         void Start()
         {
-            Debug.Log(Application.persistentDataPath);
+            //Debug.Log(Application.persistentDataPath);
             //m_distance = (transform.position - target.position).magnitude;//获取摄像机初始距离
             canvas=this.GetComponentInChildren<Canvas>();
             //Invoke("stopain",11);
